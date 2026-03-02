@@ -82,6 +82,17 @@ def generaMatrizConteoArrAbaIzqDer(m, n, ini, inc):
         
     return M
 
+def generaMatrizConteoDerIzqArrAba(m, n, ini, inc):
+    M = generaMatrizCeros(m,n)
+
+    contador = ini
+    for i in range(m):
+        for j in range(n-1, -1, -1):
+            M[i][j] = contador
+            contador += inc
+        
+    return M
+
 if __name__== '__main__':
     system('cls')
 
@@ -90,6 +101,6 @@ if __name__== '__main__':
     ini = int(input('Cuál es el inicio? '))
     inc = int(input('Cuál es el incremento? '))
 
-    M = generaMatrizConteoArrAbaIzqDer(m, n, ini, inc)
+    M = generaMatrizConteoDerIzqArrAba(m, n, ini, inc)
     print(M)
     muestraMatriz(M)
