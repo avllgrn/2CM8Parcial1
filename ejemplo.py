@@ -48,12 +48,26 @@ def generaMatrizIdentidad(n):
         M.append( fila )
     return M
 
+def generaMatrizConteo(m, n, ini, inc):
+    M = []
+    contador = ini
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            fila.append( contador )
+            contador += inc
+        M.append( fila )
+        
+    return M
 
 if __name__== '__main__':
     system('cls')
 
-    n = int(input('Cuál es el tamaño? '))
+    m = int(input('Cuántas filas? '))
+    n = int(input('Cuántas columnas? '))
+    ini = int(input('Cuál es el inicio? '))
+    inc = int(input('Cuál es el incremento? '))
 
-    M = generaMatrizIdentidad(n)
+    M = generaMatrizConteo(m, n, ini, inc)
     print(M)
     muestraMatriz(M)
