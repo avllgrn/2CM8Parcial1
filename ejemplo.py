@@ -36,14 +36,24 @@ def generaMatrizAleatorios(m, n, inf, sup):
         M.append( fila )
     return M
 
+def generaMatrizIdentidad(n):
+    M = []
+    for i in range(n):
+        fila = []
+        for j in range(n):
+            if i==j:
+                fila.append( 1 )
+            else:
+                fila.append( 0 )
+        M.append( fila )
+    return M
+
+
 if __name__== '__main__':
     system('cls')
 
-    m = int(input('Cuantas filas? '))
-    n = int(input('Cuantas columnas? '))
-    inf = int(input('Límite inferior? '))
-    sup = int(input('Límite superior? '))
+    n = int(input('Cuál es el tamaño? '))
 
-    M = generaMatrizAleatorios(m, n, inf, sup)
+    M = generaMatrizIdentidad(n)
     print(M)
     muestraMatriz(M)
