@@ -27,12 +27,23 @@ def leeMatriz(m, n):
         M.append( fila )
     return M
 
+def generaMatrizAleatorios(m, n, inf, sup):
+    M = []
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            fila.append( randrange(inf, sup) )
+        M.append( fila )
+    return M
+
 if __name__== '__main__':
     system('cls')
 
     m = int(input('Cuantas filas? '))
     n = int(input('Cuantas columnas? '))
+    inf = int(input('Límite inferior? '))
+    sup = int(input('Límite superior? '))
 
-    M = leeMatriz(m, n)
+    M = generaMatrizAleatorios(m, n, inf, sup)
     print(M)
     muestraMatriz(M)
