@@ -142,12 +142,34 @@ def triangularSuperior(n):
                 M[i][j] = randrange(100)
     return M
     
+def generaTriangularInferiorIzqDerArrAba(n, ini, inc):
+    M = generaMatrizCeros(n,n)
+    contador = ini
+    for i in range(n):
+        for j in range(n):
+            if i>=j:
+                M[i][j] = contador
+                contador += inc
+    return M
+
+def generaTriangularSuperiorIzqDerArrAba(n, ini, inc):
+    M = generaMatrizCeros(n,n)
+    contador = ini
+    for i in range(n):
+        for j in range(n):
+            if i<=j:
+                M[i][j] = contador
+                contador += inc
+    return M
+
 if __name__== '__main__':
     system('cls')
 
     n = int(input('Filas y Columnas? '))
-    MTI = triangularInferior(n)
-    MTS = triangularSuperior(n)
+    ini = int(input('Inicio de segmento? '))
+    inc = int(input('Incremento? '))
+    MTI = generaTriangularInferiorIzqDerArrAba(n,ini,inc)
+    MTS = generaTriangularSuperiorIzqDerArrAba(n,ini,inc)
 
     print('\nMTI')
     muestraMatriz(MTI)
