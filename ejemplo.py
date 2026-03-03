@@ -101,17 +101,18 @@ def generaMatrizConteoArrAbaDerIzq(m, n, ini, inc):
         for i in range(m):
             M[i][j] = contador
             contador += inc
-        
+
     return M
+
+def posiciones(m,n):
+    for i in range(m):
+        for j in range(n):
+            print(f'[{i}][{j}]', end='\t')
+        print()
 
 if __name__== '__main__':
     system('cls')
 
-    m = int(input('Cuántas filas? '))
-    n = int(input('Cuántas columnas? '))
-    ini = int(input('Cuál es el inicio? '))
-    inc = int(input('Cuál es el incremento? '))
-
-    M = generaMatrizConteoArrAbaDerIzq(m, n, ini, inc)
-    print(M)
-    muestraMatriz(M)
+    m = int(input('Filas? '))
+    n = int(input('Columnas? '))
+    posiciones(m, n)
