@@ -110,9 +110,46 @@ def posiciones(m,n):
             print(f'[{i}][{j}]', end='\t')
         print()
 
+def triangularInferior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i>=j:
+                M[i][j] = randrange(100)
+    return M
+
+def triangularSuperior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i<=j:
+                M[i][j] = randrange(100)
+    return M
+    
+def triangularInferior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i>=j:
+                M[i][j] = randrange(100)
+    return M
+
+def triangularSuperior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i<=j:
+                M[i][j] = randrange(100)
+    return M
+    
 if __name__== '__main__':
     system('cls')
 
-    m = int(input('Filas? '))
-    n = int(input('Columnas? '))
-    posiciones(m, n)
+    n = int(input('Filas y Columnas? '))
+    MTI = triangularInferior(n)
+    MTS = triangularSuperior(n)
+
+    print('\nMTI')
+    muestraMatriz(MTI)
+    print('\nMTS')
+    muestraMatriz(MTS)
