@@ -162,16 +162,65 @@ def generaTriangularSuperiorIzqDerArrAba(n, ini, inc):
                 contador += inc
     return M
 
+def generaVector(n):
+    V = []
+    for i in range(n):
+        V.append(randrange(100))
+    return V
+
+def muestraVector(V):
+    n = len(V)
+    for i in range(n):
+        print(f'[{i}] = {V[i]}')
+        
+def copiaVector(V):
+    Copia = []
+    n = len(V)
+    for i in range(n):
+        Copia.append( V[i] )
+    return Copia
+
+def copiaMatriz(M):
+    m = len(M)
+    n = len(M[0])
+    Copia = generaMatrizCeros(m, n)
+    for i in range(m):
+        for j in range(n):
+            Copia[i][j] = M[i][j]
+    return Copia
+
 if __name__== '__main__':
     system('cls')
 
-    n = int(input('Filas y Columnas? '))
-    ini = int(input('Inicio de segmento? '))
-    inc = int(input('Incremento? '))
-    MTI = generaTriangularInferiorIzqDerArrAba(n,ini,inc)
-    MTS = generaTriangularSuperiorIzqDerArrAba(n,ini,inc)
-
-    print('\nMTI')
-    muestraMatriz(MTI)
-    print('\nMTS')
-    muestraMatriz(MTS)
+    n = int(input('Cuántos datos? '))
+    V = generaVector(n)
+    Copia = copiaVector(V)
+    print('V')
+    muestraVector(V)
+    print('Copia')
+    muestraVector(Copia)
+    print()
+    
+    Copia[0] = 111
+    
+    print('V')
+    muestraVector(V)
+    print('Copia')
+    muestraVector(Copia)
+    input('\n\nPresiona una tecla para continuar...\n\n')
+    system('cls')
+    
+    m = int(input('Cuántas filas? '))
+    n = int(input('Cuántas columnas? '))
+    M = generaMatrizAleatorios(m,n,0,100)
+    MCopia = copiaMatriz(M)
+    print('\nM')
+    muestraMatriz(M)
+    print('\nMCopia')
+    muestraMatriz(MCopia)
+    
+    MCopia[0][0] = 111
+    print('\nM')
+    muestraMatriz(M)
+    print('\nMCopia')
+    muestraMatriz(MCopia)
