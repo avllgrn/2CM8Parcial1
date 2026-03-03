@@ -189,38 +189,24 @@ def copiaMatriz(M):
             Copia[i][j] = M[i][j]
     return Copia
 
+def generaTranspuesta(M):
+    mT = len(M[0])
+    nT = len(M)
+    MT = generaMatrizCeros(mT, nT)
+    for i in range(m):
+        for j in range(n):
+           MT[j][i] = M[i][j]
+    return MT
+
 if __name__== '__main__':
     system('cls')
-
-    n = int(input('Cuántos datos? '))
-    V = generaVector(n)
-    Copia = copiaVector(V)
-    print('V')
-    muestraVector(V)
-    print('Copia')
-    muestraVector(Copia)
-    print()
-    
-    Copia[0] = 111
-    
-    print('V')
-    muestraVector(V)
-    print('Copia')
-    muestraVector(Copia)
-    input('\n\nPresiona una tecla para continuar...\n\n')
-    system('cls')
-    
+   
     m = int(input('Cuántas filas? '))
     n = int(input('Cuántas columnas? '))
     M = generaMatrizAleatorios(m,n,0,100)
-    MCopia = copiaMatriz(M)
+    MT = generaTranspuesta(M)
+
     print('\nM')
     muestraMatriz(M)
-    print('\nMCopia')
-    muestraMatriz(MCopia)
-    
-    MCopia[0][0] = 111
-    print('\nM')
-    muestraMatriz(M)
-    print('\nMCopia')
-    muestraMatriz(MCopia)
+    print('\nMT')
+    muestraMatriz(MT)
