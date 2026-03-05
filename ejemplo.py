@@ -53,6 +53,14 @@ def promediaDatosEnVector(V):
         suma += V[i]
     return suma/n
 
+def cuentaDatoEnVector(x, V):
+    n = len(V)
+    veces = 0
+    for i in range(n):
+        if V[i]==x:
+            veces += 1
+    return veces
+
 if __name__== '__main__':
     system('cls')
 
@@ -61,9 +69,8 @@ if __name__== '__main__':
     print('V')
     muestraVector(V)
     print()
+    x = int(input('Cuál dato quieres contabilizar? '))
 
-    s = sumaDatosEnVector(V)
-    p = promediaDatosEnVector(V)
+    tantas = cuentaDatoEnVector(x, V)
 
-    print(f'La suma de los datos es {s}')
-    print(f'El promedio de los datos es {p}')
+    print(f'{x} está {tantas} veces')
