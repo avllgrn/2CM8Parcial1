@@ -87,7 +87,7 @@ def buscaCaracter(caracter, cadena):
         if cadena[i]==caracter:
             return True
     return False
-    
+
 def cuentaCaracter(caracter, cadena):
     n = len(cadena)
     veces = 0
@@ -96,14 +96,27 @@ def cuentaCaracter(caracter, cadena):
             veces += 1
     return veces
 
+def copiaCadena(cadena):
+    copia = ''
+    n = len(cadena)
+    for i in range(n):
+        copia = copia + cadena[i]
+    return copia
+
+def copiaCadenaInvertida(cadena):
+    copia = ''
+    n = len(cadena)
+    for i in range(n):
+        copia = cadena[i] + copia
+    return copia
+
 if __name__== '__main__':
     system('cls')
 
     cadena = input('Ingresa una cadena ')
-    caracter = input('Qué caracter buscas en tu cadena? ')
+    copia  = copiaCadena(cadena)
+    invertida  = copiaCadenaInvertida(cadena)
 
-    if buscaCaracter(caracter, cadena):
-        tantas = cuentaCaracter(caracter, cadena)
-        print(f'{caracter} ESTÁ {tantas} veces en tu cadena.')
-    else:
-        print(f'{caracter} NO está en tu cadena.')
+    print(f'Cadena\t : {cadena}')
+    print(f'Copia\t : {copia}')
+    print(f'Invertida: {invertida}')
