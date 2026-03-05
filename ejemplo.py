@@ -61,16 +61,48 @@ def cuentaDatoEnVector(x, V):
             veces += 1
     return veces
 
+def sumaVectores(A, B):
+    nA = len(A)
+    nB = len(B)
+    C = []
+    if nA==nB:
+        nC = nA = nB
+        for i in range(nC):
+            C.append(A[i] + B[i])
+    return C
+
+def restaVectores(A, B):
+    nA = len(A)
+    nB = len(B)
+    C = []
+    if nA==nB:
+        nC = nA = nB
+        for i in range(nC):
+            C.append(A[i] - B[i])
+    return C
+
 if __name__== '__main__':
     system('cls')
 
-    n = int(input('Cuántos datos? '))
-    V = generaVector(n)
-    print('V')
-    muestraVector(V)
-    print()
-    x = int(input('Cuál dato quieres contabilizar? '))
+    n1 = int(input('Cuántos datos tiene V1? '))
+    n2 = int(input('Cuántos datos tiene V1? '))
 
-    tantas = cuentaDatoEnVector(x, V)
-
-    print(f'{x} está {tantas} veces')
+    if n1==n2:
+        V1 = generaVector(n1)
+        V2 = generaVector(n2)
+        V3 = sumaVectores(V1, V2)
+        V4 = restaVectores(V1, V2)
+        print('V1')
+        muestraVector(V1)
+        print()
+        print('V2')
+        muestraVector(V2)
+        print()
+        print('V1+V2')
+        muestraVector(V3)
+        print()
+        print('V1-V2')
+        muestraVector(V4)
+        print()
+    else:
+        print('No pueden sumarse ni restarse...')
