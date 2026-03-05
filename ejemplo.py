@@ -239,30 +239,63 @@ def cuentaDatoEnMatriz(x, M):
 
     return veces
 
+def sumaMatrices(M1, M2):
+    m1 = len(M1)
+    n1 = len(M1[0])
+    m2 = len(M2)
+    if m1==m2 or n1==n2:
+        m3 = m1 = m2
+        n3 = n1 = n2
+        S = generaMatrizCeros(m3, n3)
+        for i in range(m3):
+            for j in range(n3):
+                S[i][j] = M1[i][j] + M2[i][j]
+    else:
+        S = []
+    
+    return S
+
+def restaMatrices(M1, M2):
+    m1 = len(M1)
+    n1 = len(M1[0])
+    m2 = len(M2)
+    if m1==m2 or n1==n2:
+        m3 = m1 = m2
+        n3 = n1 = n2
+        R = generaMatrizCeros(m3, n3)
+        for i in range(m3):
+            for j in range(n3):
+                R[i][j] = M1[i][j] - M2[i][j]
+    else:
+        R = []
+    
+    return R
+
 if __name__== '__main__':
     system('cls')
    
-    m = int(input('Cuántas filas? '))
-    n = int(input('Cuántas columnas? '))
-    M = generaMatrizAleatorios(m,n,0,100)
+    m1 = int(input('Cuántas filas de matriz 1? '))
+    n1 = int(input('Cuántas columnas de matriz 1? '))
+    m2 = int(input('Cuántas filas de matriz 2? '))
+    n2 = int(input('Cuántas columnas de matriz 2? '))
 
-    pMenor = menorEnMatriz(M)
-    filaMenor = pMenor[0]
-    columnaMenor = pMenor[1]
-    menor = M[ filaMenor ][ columnaMenor ]
+    if m1==m2 or n1==n2:
+        M1 = generaMatrizAleatorios(m1,n2,1,100)
+        M2 = generaMatrizAleatorios(m1,n2,1,100)
+        M3 = sumaMatrices(M1, M2)
+        M4 = restaMatrices(M1, M2)
 
-    pMayor = mayorEnMatriz(M)
-    filaMayor = pMayor[0]
-    columnaMayor = pMayor[1]
-    mayor = M[ filaMayor ][ columnaMayor ]
-
-    print('\nM')
-    muestraMatriz(M)
-    print()
-    print(f'El valor menor es {menor} y está en [{filaMenor}][{columnaMenor}]')
-    print(f'El valor mayor es {mayor} y está en [{filaMayor}][{columnaMayor}]')
-    print()
-
-    x = int(input('Qué dato quieres contabilizar? '))
-    tantas = cuentaDatoEnMatriz(x, M)
-    print(f'{x} está {tantas} veces')
+        print('\nM1')
+        muestraMatriz(M1)
+        print()
+        print('\nM2')
+        muestraMatriz(M2)
+        print()
+        print('\nM1+M2')
+        muestraMatriz(M3)
+        print()
+        print('\nM1-M2')
+        muestraMatriz(M4)
+        print()
+    else:
+        print('No pueden sumarse ni restarse...')
