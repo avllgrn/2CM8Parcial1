@@ -110,13 +110,37 @@ def copiaCadenaInvertida(cadena):
         copia = cadena[i] + copia
     return copia
 
+def convierteCadenaEnLista(cadena):
+    lista = []
+    n = len(cadena)
+    for i in range(n):
+        lista.append(cadena[i])
+    return lista
+
+def convierteCadenaEnListaDeMayusculas(cadena):
+    lista = []
+    n = len(cadena)
+    for i in range(n):
+        lista.append(cadena[i].upper())
+    return lista
+
+def convierteCadenaEnListaSinEspeciales(cadena:str):
+    lista = []
+    n = len(cadena)
+    for i in range(n):
+        if cadena[i].isalnum():
+            lista.append(cadena[i])
+    return lista
+
 if __name__== '__main__':
     system('cls')
 
     cadena = input('Ingresa una cadena ')
-    copia  = copiaCadena(cadena)
-    invertida  = copiaCadenaInvertida(cadena)
+    lista  = convierteCadenaEnLista(cadena)
+    enMayusculas  = convierteCadenaEnListaDeMayusculas(cadena)
+    sinEspeciales  = convierteCadenaEnListaSinEspeciales(cadena)
 
     print(f'Cadena\t : {cadena}')
-    print(f'Copia\t : {copia}')
-    print(f'Invertida: {invertida}')
+    print(f'Lista\t : {lista}')
+    print(f'En mayusculas\t : {enMayusculas}')
+    print(f'Sin Especiales\t : {sinEspeciales}')
