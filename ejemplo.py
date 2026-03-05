@@ -291,18 +291,62 @@ def promediaDatosEnMatriz(M):
 
     return suma/(m*n)
 
+def sumaFilaDeMatriz(fila, M):
+    n = len(M[0])
+    suma = 0
+    for j in range(n):
+        suma += M[ fila ][j]
+
+    return suma
+
+def promediaFilaDeMatriz(fila, M):
+    n = len(M[0])
+    suma = 0
+    for j in range(n):
+        suma += M[ fila ][j]
+
+    return suma/n
+
+def sumaColumnaDeMatriz(columna, M):
+    m = len(M)
+    suma = 0
+    for i in range(m):
+        suma += M[i][ columna ]
+
+    return suma
+
+def promediaColumnaDeMatriz(columna, M):
+    m = len(M)
+    suma = 0
+    for i in range(m):
+        suma += M[i][ columna ]
+
+    return suma/m
+
 if __name__== '__main__':
     system('cls')
-   
+
     m = int(input('Cuántas filas de matriz? '))
     n = int(input('Cuántas columnas de matriz? '))
-    M = generaMatrizAleatorios(m,n,1,100)
+    M = generaMatrizAleatorios(m,n,1,5)
     print('\nM')
     muestraMatriz(M)
     print()
 
-    s = sumaDatosEnMatriz(M)
-    p = promediaDatosEnMatriz(M)
+    sT = sumaDatosEnMatriz(M)
+    pT = promediaDatosEnMatriz(M)
 
-    print(f'La suma de los datos es {s}')
-    print(f'El promedio de los datos es {p}')
+    print(f'La suma de los datos es {sT}')
+    print(f'El promedio de los datos es {pT}')
+
+    f = int(input('\nDame un numero de fila existente en la matriz '))
+    sF = sumaFilaDeMatriz(f, M)
+    pF = promediaFilaDeMatriz(f, M)
+    print(f'La suma de esa fila es {sF}')
+    print(f'El promediod de esa fila es {pF}')
+
+    c = int(input('\nDame un numero de fila existente en la matriz '))
+    sC = sumaColumnaDeMatriz(c, M)
+    pC = promediaColumnaDeMatriz(c, M)
+    print(f'La suma de esa columna es {sC}')
+    print(f'El promediod de esa columna es {pC}')
