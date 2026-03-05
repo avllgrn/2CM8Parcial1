@@ -81,28 +81,29 @@ def restaVectores(A, B):
             C.append(A[i] - B[i])
     return C
 
+def buscaCaracter(caracter, cadena):
+    n = len(cadena)
+    for i in range(n):
+        if cadena[i]==caracter:
+            return True
+    return False
+    
+def cuentaCaracter(caracter, cadena):
+    n = len(cadena)
+    veces = 0
+    for i in range(n):
+        if cadena[i]==caracter:
+            veces += 1
+    return veces
+
 if __name__== '__main__':
     system('cls')
 
-    n1 = int(input('Cuántos datos tiene V1? '))
-    n2 = int(input('Cuántos datos tiene V1? '))
+    cadena = input('Ingresa una cadena ')
+    caracter = input('Qué caracter buscas en tu cadena? ')
 
-    if n1==n2:
-        V1 = generaVector(n1)
-        V2 = generaVector(n2)
-        V3 = sumaVectores(V1, V2)
-        V4 = restaVectores(V1, V2)
-        print('V1')
-        muestraVector(V1)
-        print()
-        print('V2')
-        muestraVector(V2)
-        print()
-        print('V1+V2')
-        muestraVector(V3)
-        print()
-        print('V1-V2')
-        muestraVector(V4)
-        print()
+    if buscaCaracter(caracter, cadena):
+        tantas = cuentaCaracter(caracter, cadena)
+        print(f'{caracter} ESTÁ {tantas} veces en tu cadena.')
     else:
-        print('No pueden sumarse ni restarse...')
+        print(f'{caracter} NO está en tu cadena.')
