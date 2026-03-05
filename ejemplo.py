@@ -132,15 +132,55 @@ def convierteCadenaEnListaSinEspeciales(cadena:str):
             lista.append(cadena[i])
     return lista
 
+def esCapicua(entero):
+    n = len(entero)
+    # Se buscan diferencias desde los extremos hacia la mitad de la cadena
+    i = 0
+    j = n-1
+    while i<j:
+        if entero[i] != entero[j]:
+            return False
+        i += 1
+        j -= 1
+
+    return True
+
+def esPalindromo(palindromo):
+    # Se convierte cadena a lista en mayusculas sin especiales
+    lista = []
+    nPalindromo = len(palindromo)
+    for i in range(nPalindromo):
+        if palindromo[i].isalnum():
+            lista.append(palindromo[i].upper())
+
+    # Se buscan diferencias desde los extremos hacia la mitad de la lista
+    nLista = len(lista)
+    i = 0
+    j = nLista-1
+    while i<j:
+        if lista[i] != lista[j]:
+            return False
+        i += 1
+        j -= 1
+
+    return True
+
 if __name__== '__main__':
     system('cls')
+    cadenaEntero = input('Ingresa un número entero ')
+    if esCapicua(cadenaEntero):
+        print(f'{cadenaEntero} ES capicúa')
+    else:
+        print(f'{cadenaEntero} NO es capicúa')
 
-    cadena = input('Ingresa una cadena ')
-    lista  = convierteCadenaEnLista(cadena)
-    enMayusculas  = convierteCadenaEnListaDeMayusculas(cadena)
-    sinEspeciales  = convierteCadenaEnListaSinEspeciales(cadena)
+    input('Presiona una tecla para continuar...')
+    system('cls')
 
-    print(f'Cadena\t : {cadena}')
-    print(f'Lista\t : {lista}')
-    print(f'En mayusculas\t : {enMayusculas}')
-    print(f'Sin Especiales\t : {sinEspeciales}')
+    palindromo = input('Ingresa un palíndromo ')
+    if esPalindromo(palindromo):
+        print(f'{palindromo} ES palíndromo')
+    else:
+        print(f'{palindromo} NO es palíndromo')
+
+# Ejemplos de capicúas: 1234321 y 11223344332211
+# Ejemplo de palíndromo: ¡¡¡Anita!!! ¡¡¡Lava la !"#$%&/()= tina!!!
