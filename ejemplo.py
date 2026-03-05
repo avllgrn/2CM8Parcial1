@@ -4,7 +4,7 @@ from random import randrange
 def generaVector(n):
     V = []
     for i in range(n):
-        V.append(randrange(100))
+        V.append(randrange(10))
     return V
 
 def muestraVector(V):
@@ -39,6 +39,20 @@ def mayorEnVector(V):
             posicionMayor = i
     return posicionMayor
 
+def sumaDatosEnVector(V):
+    n = len(V)
+    suma = 0
+    for i in range(n):
+        suma += V[i]
+    return suma
+
+def promediaDatosEnVector(V):
+    n = len(V)
+    suma = 0
+    for i in range(n):
+        suma += V[i]
+    return suma/n
+
 if __name__== '__main__':
     system('cls')
 
@@ -48,10 +62,8 @@ if __name__== '__main__':
     muestraVector(V)
     print()
 
-    pMenor = menorEnVector(V)
-    menor = V[pMenor]
-    pMayor = mayorEnVector(V)
-    mayor = V[pMayor]
+    s = sumaDatosEnVector(V)
+    p = promediaDatosEnVector(V)
 
-    print(f'El valor menor es {menor} y está en [{pMenor}]')
-    print(f'El valor mayor es {mayor} y está en [{pMayor}]')
+    print(f'La suma de los datos es {s}')
+    print(f'El promedio de los datos es {p}')
