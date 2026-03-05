@@ -1,10 +1,171 @@
 from os import system
 from random import randrange
 
+def generaMatrizCeros(m, n):
+    M = []
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            fila.append( 0 )
+        M.append( fila )
+    return M
+
+def muestraMatriz(M):
+    m = len(M)
+    n = len( M[0] )
+    for i in range(m):
+        for j in range(n):
+            print(M[i][j], end='\t')
+        print()
+
+def leeMatriz(m, n):
+    M = []
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            fila.append( int(input(f'Ingresa [{i}][{j}] ')) )
+        M.append( fila )
+    return M
+
+def generaMatrizAleatorios(m, n, inf, sup):
+    M = []
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            fila.append( randrange(inf, sup) )
+        M.append( fila )
+    return M
+
+def generaMatrizIdentidad(n):
+    M = []
+    for i in range(n):
+        fila = []
+        for j in range(n):
+            if i==j:
+                fila.append( 1 )
+            else:
+                fila.append( 0 )
+        M.append( fila )
+    return M
+
+def generaMatrizConteo(m, n, ini, inc):
+    M = []
+    contador = ini
+    for i in range(m):
+        fila = []
+        for j in range(n):
+            fila.append( contador )
+            contador += inc
+        M.append( fila )
+        
+    return M
+
+def generaMatrizConteoIzqDerArrAba(m, n, ini, inc):
+    M = generaMatrizCeros(m,n)
+
+    contador = ini
+    for i in range(m):
+        for j in range(n):
+            M[i][j] = contador
+            contador += inc
+        
+    return M
+
+def generaMatrizConteoArrAbaIzqDer(m, n, ini, inc):
+    M = generaMatrizCeros(m,n)
+
+    contador = ini
+    for j in range(n):
+        for i in range(m):
+            M[i][j] = contador
+            contador += inc
+        
+    return M
+
+def generaMatrizConteoDerIzqArrAba(m, n, ini, inc):
+    M = generaMatrizCeros(m,n)
+
+    contador = ini
+    for i in range(m):
+        for j in range(n-1, -1, -1):
+            M[i][j] = contador
+            contador += inc
+        
+    return M
+
+def generaMatrizConteoArrAbaDerIzq(m, n, ini, inc):
+    M = generaMatrizCeros(m,n)
+
+    contador = ini
+    for j in range(n-1, -1, -1):
+        for i in range(m):
+            M[i][j] = contador
+            contador += inc
+
+    return M
+
+def posiciones(m,n):
+    for i in range(m):
+        for j in range(n):
+            print(f'[{i}][{j}]', end='\t')
+        print()
+
+def triangularInferior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i>=j:
+                M[i][j] = randrange(100)
+    return M
+
+def triangularSuperior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i<=j:
+                M[i][j] = randrange(100)
+    return M
+    
+def triangularInferior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i>=j:
+                M[i][j] = randrange(100)
+    return M
+
+def triangularSuperior(n):
+    M = generaMatrizCeros(n,n)
+    for i in range(n):
+        for j in range(n):
+            if i<=j:
+                M[i][j] = randrange(100)
+    return M
+    
+def generaTriangularInferiorIzqDerArrAba(n, ini, inc):
+    M = generaMatrizCeros(n,n)
+    contador = ini
+    for i in range(n):
+        for j in range(n):
+            if i>=j:
+                M[i][j] = contador
+                contador += inc
+    return M
+
+def generaTriangularSuperiorIzqDerArrAba(n, ini, inc):
+    M = generaMatrizCeros(n,n)
+    contador = ini
+    for i in range(n):
+        for j in range(n):
+            if i<=j:
+                M[i][j] = contador
+                contador += inc
+    return M
+
 def generaVector(n):
     V = []
     for i in range(n):
-        V.append(randrange(10))
+        V.append(randrange(100))
     return V
 
 def muestraVector(V):
@@ -19,168 +180,89 @@ def copiaVector(V):
         Copia.append( V[i] )
     return Copia
 
-def menorEnVector(V):
-    n = len(V)
-    menor = V[0]
-    posicionMenor = 0
-    for i in range(n):
-        if V[i]<menor:
-            menor=V[i]
-            posicionMenor = i
-    return posicionMenor
+def copiaMatriz(M):
+    m = len(M)
+    n = len(M[0])
+    Copia = generaMatrizCeros(m, n)
+    for i in range(m):
+        for j in range(n):
+            Copia[i][j] = M[i][j]
+    return Copia
 
-def mayorEnVector(V):
-    n = len(V)
-    mayor = V[0]
-    posicionMayor = 0
-    for i in range(n):
-        if V[i]>mayor:
-            mayor=V[i]
-            posicionMayor = i
-    return posicionMayor
+def generaTranspuesta(M):
+    mT = len(M[0])
+    nT = len(M)
+    MT = generaMatrizCeros(mT, nT)
+    for i in range(m):
+        for j in range(n):
+           MT[j][i] = M[i][j]
+    return MT
 
-def sumaDatosEnVector(V):
-    n = len(V)
-    suma = 0
-    for i in range(n):
-        suma += V[i]
-    return suma
+def menorEnMatriz(M):
+    m = len(M)
+    n = len(M[0])
+    menor = M[0][0]
+    filaMenor = 0
+    columnaMenor = 0
+    for i in range(m):
+        for j in range(n):
+            if M[i][j]<menor:
+                menor=M[i][j]
+                filaMenor = i
+                columnaMenor = j
 
-def promediaDatosEnVector(V):
-    n = len(V)
-    suma = 0
-    for i in range(n):
-        suma += V[i]
-    return suma/n
+    return (filaMenor, columnaMenor)
 
-def cuentaDatoEnVector(x, V):
-    n = len(V)
+def mayorEnMatriz(M):
+    m = len(M)
+    n = len(M[0])
+    mayor = M[0][0]
+    filaMayor = 0
+    columnaMayor = 0
+    for i in range(m):
+        for j in range(n):
+            if M[i][j]>mayor:
+                mayor=M[i][j]
+                filaMayor = i
+                columnaMayor = j
+
+    return (filaMayor, columnaMayor)
+
+def cuentaDatoEnMatriz(x, M):
+    m = len(M)
+    n = len(M[0])
     veces = 0
-    for i in range(n):
-        if V[i]==x:
-            veces += 1
+    for i in range(m):
+        for j in range(n):
+            if M[i][j]==x:
+                veces += 1
+
     return veces
-
-def sumaVectores(A, B):
-    nA = len(A)
-    nB = len(B)
-    C = []
-    if nA==nB:
-        nC = nA = nB
-        for i in range(nC):
-            C.append(A[i] + B[i])
-    return C
-
-def restaVectores(A, B):
-    nA = len(A)
-    nB = len(B)
-    C = []
-    if nA==nB:
-        nC = nA = nB
-        for i in range(nC):
-            C.append(A[i] - B[i])
-    return C
-
-def buscaCaracter(caracter, cadena):
-    n = len(cadena)
-    for i in range(n):
-        if cadena[i]==caracter:
-            return True
-    return False
-
-def cuentaCaracter(caracter, cadena):
-    n = len(cadena)
-    veces = 0
-    for i in range(n):
-        if cadena[i]==caracter:
-            veces += 1
-    return veces
-
-def copiaCadena(cadena):
-    copia = ''
-    n = len(cadena)
-    for i in range(n):
-        copia = copia + cadena[i]
-    return copia
-
-def copiaCadenaInvertida(cadena):
-    copia = ''
-    n = len(cadena)
-    for i in range(n):
-        copia = cadena[i] + copia
-    return copia
-
-def convierteCadenaEnLista(cadena):
-    lista = []
-    n = len(cadena)
-    for i in range(n):
-        lista.append(cadena[i])
-    return lista
-
-def convierteCadenaEnListaDeMayusculas(cadena):
-    lista = []
-    n = len(cadena)
-    for i in range(n):
-        lista.append(cadena[i].upper())
-    return lista
-
-def convierteCadenaEnListaSinEspeciales(cadena:str):
-    lista = []
-    n = len(cadena)
-    for i in range(n):
-        if cadena[i].isalnum():
-            lista.append(cadena[i])
-    return lista
-
-def esCapicua(entero):
-    n = len(entero)
-    # Se buscan diferencias desde los extremos hacia la mitad de la cadena
-    i = 0
-    j = n-1
-    while i<j:
-        if entero[i] != entero[j]:
-            return False
-        i += 1
-        j -= 1
-
-    return True
-
-def esPalindromo(palindromo):
-    # Se convierte cadena a lista en mayusculas sin especiales
-    lista = []
-    nPalindromo = len(palindromo)
-    for i in range(nPalindromo):
-        if palindromo[i].isalnum():
-            lista.append(palindromo[i].upper())
-
-    # Se buscan diferencias desde los extremos hacia la mitad de la lista
-    nLista = len(lista)
-    i = 0
-    j = nLista-1
-    while i<j:
-        if lista[i] != lista[j]:
-            return False
-        i += 1
-        j -= 1
-
-    return True
 
 if __name__== '__main__':
     system('cls')
-    cadenaEntero = input('Ingresa un número entero ')
-    if esCapicua(cadenaEntero):
-        print(f'{cadenaEntero} ES capicúa')
-    else:
-        print(f'{cadenaEntero} NO es capicúa')
+   
+    m = int(input('Cuántas filas? '))
+    n = int(input('Cuántas columnas? '))
+    M = generaMatrizAleatorios(m,n,0,100)
 
-    input('Presiona una tecla para continuar...')
-    system('cls')
+    pMenor = menorEnMatriz(M)
+    filaMenor = pMenor[0]
+    columnaMenor = pMenor[1]
+    menor = M[ filaMenor ][ columnaMenor ]
 
-    palindromo = input('Ingresa un palíndromo ')
-    if esPalindromo(palindromo):
-        print(f'{palindromo} ES palíndromo')
-    else:
-        print(f'{palindromo} NO es palíndromo')
+    pMayor = mayorEnMatriz(M)
+    filaMayor = pMayor[0]
+    columnaMayor = pMayor[1]
+    mayor = M[ filaMayor ][ columnaMayor ]
 
-# Ejemplos de capicúas: 1234321 y 11223344332211
-# Ejemplo de palíndromo: ¡¡¡Anita!!! ¡¡¡Lava la !"#$%&/()= tina!!!
+    print('\nM')
+    muestraMatriz(M)
+    print()
+    print(f'El valor menor es {menor} y está en [{filaMenor}][{columnaMenor}]')
+    print(f'El valor mayor es {mayor} y está en [{filaMayor}][{columnaMayor}]')
+    print()
+
+    x = int(input('Qué dato quieres contabilizar? '))
+    tantas = cuentaDatoEnMatriz(x, M)
+    print(f'{x} está {tantas} veces')
