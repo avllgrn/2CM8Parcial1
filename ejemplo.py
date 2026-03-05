@@ -271,31 +271,38 @@ def restaMatrices(M1, M2):
     
     return R
 
+def sumaDatosEnMatriz(M):
+    m = len(M)
+    n = len(M[0])
+    suma = 0
+    for i in range(m):
+        for j in range(n):
+            suma += M[i][j]
+
+    return suma
+
+def promediaDatosEnMatriz(M):
+    m = len(M)
+    n = len(M[0])
+    suma = 0
+    for i in range(m):
+        for j in range(n):
+            suma += M[i][j]
+
+    return suma/(m*n)
+
 if __name__== '__main__':
     system('cls')
    
-    m1 = int(input('Cuántas filas de matriz 1? '))
-    n1 = int(input('Cuántas columnas de matriz 1? '))
-    m2 = int(input('Cuántas filas de matriz 2? '))
-    n2 = int(input('Cuántas columnas de matriz 2? '))
+    m = int(input('Cuántas filas de matriz? '))
+    n = int(input('Cuántas columnas de matriz? '))
+    M = generaMatrizAleatorios(m,n,1,100)
+    print('\nM')
+    muestraMatriz(M)
+    print()
 
-    if m1==m2 or n1==n2:
-        M1 = generaMatrizAleatorios(m1,n2,1,100)
-        M2 = generaMatrizAleatorios(m1,n2,1,100)
-        M3 = sumaMatrices(M1, M2)
-        M4 = restaMatrices(M1, M2)
+    s = sumaDatosEnMatriz(M)
+    p = promediaDatosEnMatriz(M)
 
-        print('\nM1')
-        muestraMatriz(M1)
-        print()
-        print('\nM2')
-        muestraMatriz(M2)
-        print()
-        print('\nM1+M2')
-        muestraMatriz(M3)
-        print()
-        print('\nM1-M2')
-        muestraMatriz(M4)
-        print()
-    else:
-        print('No pueden sumarse ni restarse...')
+    print(f'La suma de los datos es {s}')
+    print(f'El promedio de los datos es {p}')
