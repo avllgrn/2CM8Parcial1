@@ -1,20 +1,35 @@
 from subprocess import run
+from random import randrange
 
 if __name__=='__main__':
     run('cls', shell=True)
 
-    lista = [51, -3, 5, 71, 29]
-    print(lista, type(lista), len(lista))
-    print()
+    n1 = int(input('Dame n1 '))
+    n2 = int(input('Dame n2 '))
 
-    n = len(lista)
-    for i in range(n):
-        print( f'lista[{i}] = {lista[i]}' )
-    print()
+    if n1==n2:
+        L1 = []
+        for i in range(n1):
+            L1.append( randrange(100) )
+        print()
 
-    i=0 
-    while i<n:
-        print( f'lista[{i}] = {lista[i]}' )
-        i += 1
-    print()
+        L2 = []
+        for i in range(n2):
+            L2.append( randrange(100) )
+        print()
 
+        n3 = n1
+        L3 = []
+        for i in range(n3):
+            L3.append( L1[i] + L2[i] )
+
+        print(f'L1={L1}')
+        print(f'L2={L2}')
+        print(f'L3={L3}')
+        print()
+
+        for i in range(n3):
+            print(f'[{i}]\t{L1[i]} + {L2[i]}\t= {L3[i]}')
+
+    else:
+        print("Error! No pueden sumarse...")
