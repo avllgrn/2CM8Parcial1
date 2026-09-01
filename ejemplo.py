@@ -26,17 +26,32 @@ def muestraCalificaciones(W, X, Y, Z):
 
 def buscaMayorMenor(P):
     n = len(P)
-
     mayor = P[0]
+    posMay = 0
     menor = P[0]
+    posMen = 0
     for i in range(n):
         if P[i]>mayor:
             mayor = P[i]
+            posMay = i
 
         if P[i]<menor:
             menor = P[i]
+            posMen = i
 
-    return mayor, menor
+    return (posMay, mayor), (posMen, menor)
+
+def cuentaAprobadosReprobados(P):
+    n = len(P)
+    aprobados=0
+    reprobados=0
+    for i in range(n):
+        if P[i]>=6:
+            aprobados += 1
+        else:
+            reprobados += 1
+
+    return aprobados, reprobados
 
 if __name__=='__main__':
     run('cls', shell=True)
@@ -52,10 +67,20 @@ if __name__=='__main__':
     muestraCalificaciones(p1, p2, p3, prom)
 
     esto = buscaMayorMenor(prom)
-    print(type(esto))
 
     print()
-    print(f'El promedio más alto es {esto[0]}.')
-    print(f'El promedio más bajo es {esto[1]}.')
+    print(f'esto es {type(esto)} y contiene {esto}')
+
+    mejorAlumno = esto[0]
+    peorAlumno = esto[1]
+    print('El mejor alumno es', mejorAlumno[0]+1, 'su promedio es', mejorAlumno[1],'.')
+    print('El peor alumno es', peorAlumno[0]+1, 'su promedio es', peorAlumno[1],'.')
+    print()
+
+    estoOtro = cuentaAprobadosReprobados(prom)
+    print(f'estoOtro es {type(estoOtro)} y contiene {estoOtro}')
+
+    print('Aprobaron: ', estoOtro[0])
+    print('Reprobaron: ', estoOtro[1])
     print()
     
