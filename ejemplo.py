@@ -7,6 +7,37 @@ def generaVectorAleatorio(n):
         V.append( randrange(100)/10 )
     return V
 
+def calculaPromedios(A, B, C):
+    P = []
+    for i in range(n):
+        P.append( (A[i] + B[i] + C[i])/3 )
+    return P
+
+def muestraCalificaciones(W, X, Y, Z):
+    n = len(W)
+
+    print(f'Alumno\t', end='')
+    for i in range(3):
+        print(f'P{i+1}\t', end='')
+    print('Promedio\n')
+
+    for i in range(n):
+        print(f'{i+1}\t{W[i]}\t{X[i]}\t{Y[i]}\t{Z[i]}\t')
+
+def buscaMayorMenor(P):
+    n = len(P)
+
+    mayor = P[0]
+    menor = P[0]
+    for i in range(n):
+        if P[i]>mayor:
+            mayor = P[i]
+
+        if P[i]<menor:
+            menor = P[i]
+
+    return mayor, menor
+
 if __name__=='__main__':
     run('cls', shell=True)
 
@@ -16,14 +47,15 @@ if __name__=='__main__':
     p2 = generaVectorAleatorio(n)
     p3 = generaVectorAleatorio(n)
 
-    prom = []
-    for i in range(n):
-        prom.append( (p1[i] + p2[i] + p3[i])/3 )
+    prom = calculaPromedios(p1, p2, p3)
 
-    print(f'Alumno\t', end='')
-    for i in range(3):
-        print(f'P{i+1}\t', end='')
-    print('Promedio\n')
+    muestraCalificaciones(p1, p2, p3, prom)
 
-    for i in range(n):
-        print(f'{i+1}\t{p1[i]}\t{p2[i]}\t{p3[i]}\t{prom[i]}\t')
+    esto = buscaMayorMenor(prom)
+    print(type(esto))
+
+    print()
+    print(f'El promedio más alto es {esto[0]}.')
+    print(f'El promedio más bajo es {esto[1]}.')
+    print()
+    
