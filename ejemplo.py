@@ -53,6 +53,26 @@ def cuentaAprobadosReprobados(P):
 
     return aprobados, reprobados
 
+def promedioGrupal(Finales):
+    n = len(Finales)
+    promedio=0
+    for i in range(n):
+        promedio = promedio + Finales[i]
+    promedio = promedio/n
+    return promedio
+
+def mayoresMenorAlPromedioGrupal(Finales):
+    n = len(Finales)
+    promedio=promedioGrupal(Finales)
+    mayores = 0
+    menores = 0
+    for i in range(n):
+        if Finales[i]>promedio:
+            mayores += 1
+        elif Finales[i]<promedio:
+            menores += 1
+    return mayores, menores
+
 if __name__=='__main__':
     run('cls', shell=True)
 
@@ -83,4 +103,11 @@ if __name__=='__main__':
     print('Aprobaron: ', estoOtro[0])
     print('Reprobaron: ', estoOtro[1])
     print()
-    
+
+    unoMas = mayoresMenorAlPromedioGrupal(prom)
+    print(f'unoMas es {type(unoMas)} y contiene {unoMas}')
+
+    print('Promedio Grupal: ', promedioGrupal(prom))
+    print('mayores al Promedio Grupal: ', unoMas[0])
+    print('menores al Promedio Grupal: ', unoMas[1])
+    print()
