@@ -12,34 +12,38 @@ def muestraVector(X):
     for i in range(n):
         print(f'[{i}] = {X[i]}')
 
-def copiaDe(X):
-    Y = []
-    n = len(X)
-    for i in range(n):
-        Y.append(X[i])
-    return Y
+def unir(X, Y):
+    Z = []
+    n1 = len(X)
+    n2 = len(Y)
+
+    for i in range(n1):
+        Z.append(X[i])
+
+    for i in range(n2):
+        Z.append(Y[i])
+
+    return Z
 
 if __name__=='__main__':
     run('cls', shell=True)
 
-    n = int(input('Dame n '))
+    n1 = int(input('Dame n1 '))
+    n2 = int(input('Dame n2 '))
 
-    Original = generaVectorAleatorio(n)
-    print(Original)
+    V1 = generaVectorAleatorio(n1)
+    V2 = generaVectorAleatorio(n2)
+    V3 = unir(V1,V2)
 
-    Copia = copiaDe(Original)
-    print(Copia)
-    print('\nOriginal')
-    muestraVector(Original)
-    print('\nCopia')
-    muestraVector(Copia)
-
-    Copia[0] = 100
     print()
-    print(Original)
-    print(Copia)
+    print(V1)
+    print(V2)
+    print(V3)
     print()
-    print('\nOriginal')
-    muestraVector(Original)
-    print('\nCopia')
-    muestraVector(Copia)
+    print('\nV1')
+    muestraVector(V1)
+    print('\nV2')
+    muestraVector(V2)
+    print('\nV3')
+    muestraVector(V3)
+
