@@ -12,16 +12,26 @@ def muestraVector(X):
     for i in range(n):
         print(f'[{i}] = {X[i]}')
 
-def unir(X, Y):
+def intercala(X, Y):
     Z = []
     n1 = len(X)
     n2 = len(Y)
 
-    for i in range(n1):
+    i=0
+    j=0
+    while i<n1 and i<n2:
         Z.append(X[i])
+        Z.append(Y[j])
+        i+=1
+        j+=1
 
-    for i in range(n2):
-        Z.append(Y[i])
+    while i<n1:
+        Z.append(X[i])
+        i+=1
+
+    while j<n2:
+        Z.append(Y[j])
+        j+=1
 
     return Z
 
@@ -33,7 +43,7 @@ if __name__=='__main__':
 
     V1 = generaVectorAleatorio(n1)
     V2 = generaVectorAleatorio(n2)
-    V3 = unir(V1,V2)
+    V3 = intercala(V1,V2)
 
     print()
     print(V1)
