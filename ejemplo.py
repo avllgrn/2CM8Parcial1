@@ -2,112 +2,44 @@ from subprocess import run
 from random import randrange
 
 def generaVectorAleatorio(n):
-    V = []
+    Original = []
     for i in range(n):
-        V.append( randrange(100)/10 )
-    return V
+        Original.append( randrange(100)/10 )
+    return Original
 
-def calculaPromedios(A, B, C):
-    P = []
+def muestraVector(X):
+    n = len(X)
     for i in range(n):
-        P.append( (A[i] + B[i] + C[i])/3 )
-    return P
+        print(f'[{i}] = {X[i]}')
 
-def muestraCalificaciones(W, X, Y, Z):
-    n = len(W)
-
-    print(f'Alumno\t', end='')
-    for i in range(3):
-        print(f'P{i+1}\t', end='')
-    print('Promedio\n')
-
+def copiaDe(X):
+    Y = []
+    n = len(X)
     for i in range(n):
-        print(f'{i+1}\t{W[i]}\t{X[i]}\t{Y[i]}\t{Z[i]}\t')
-
-def buscaMayorMenor(P):
-    n = len(P)
-    mayor = P[0]
-    posMay = 0
-    menor = P[0]
-    posMen = 0
-    for i in range(n):
-        if P[i]>mayor:
-            mayor = P[i]
-            posMay = i
-
-        if P[i]<menor:
-            menor = P[i]
-            posMen = i
-
-    return (posMay, mayor), (posMen, menor)
-
-def cuentaAprobadosReprobados(P):
-    n = len(P)
-    aprobados=0
-    reprobados=0
-    for i in range(n):
-        if P[i]>=6:
-            aprobados += 1
-        else:
-            reprobados += 1
-
-    return aprobados, reprobados
-
-def promedioGrupal(Finales):
-    n = len(Finales)
-    promedio=0
-    for i in range(n):
-        promedio = promedio + Finales[i]
-    promedio = promedio/n
-    return promedio
-
-def mayoresMenorAlPromedioGrupal(Finales):
-    n = len(Finales)
-    promedio=promedioGrupal(Finales)
-    mayores = 0
-    menores = 0
-    for i in range(n):
-        if Finales[i]>promedio:
-            mayores += 1
-        elif Finales[i]<promedio:
-            menores += 1
-    return mayores, menores
+        Y.append(X[i])
+    return Y
 
 if __name__=='__main__':
     run('cls', shell=True)
 
-    n = int(input('¿Cuántos alumnos? '))
+    n = int(input('Dame n '))
 
-    p1 = generaVectorAleatorio(n)
-    p2 = generaVectorAleatorio(n)
-    p3 = generaVectorAleatorio(n)
+    Original = generaVectorAleatorio(n)
+    print(Original)
 
-    prom = calculaPromedios(p1, p2, p3)
+    Copia = copiaDe(Original)
+    print(Copia)
+    print('\nOriginal')
+    muestraVector(Original)
+    print('\nCopia')
+    muestraVector(Copia)
 
-    muestraCalificaciones(p1, p2, p3, prom)
-
-    esto = buscaMayorMenor(prom)
-
+    Copia[0] = 100
     print()
-    print(f'esto es {type(esto)} y contiene {esto}')
-
-    mejorAlumno = esto[0]
-    peorAlumno = esto[1]
-    print('El mejor alumno es', mejorAlumno[0]+1, 'su promedio es', mejorAlumno[1],'.')
-    print('El peor alumno es', peorAlumno[0]+1, 'su promedio es', peorAlumno[1],'.')
+    print(Original)
+    print(Copia)
     print()
-
-    estoOtro = cuentaAprobadosReprobados(prom)
-    print(f'estoOtro es {type(estoOtro)} y contiene {estoOtro}')
-
-    print('Aprobaron: ', estoOtro[0])
-    print('Reprobaron: ', estoOtro[1])
-    print()
-
-    unoMas = mayoresMenorAlPromedioGrupal(prom)
-    print(f'unoMas es {type(unoMas)} y contiene {unoMas}')
-
-    print('Promedio Grupal: ', promedioGrupal(prom))
-    print('mayores al Promedio Grupal: ', unoMas[0])
-    print('menores al Promedio Grupal: ', unoMas[1])
-    print()
+    print('\nOriginal')
+    muestraVector(Original)
+    print('\nCopia')
+    muestraVector(Copia)
