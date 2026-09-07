@@ -9,6 +9,6 @@ if __name__=='__main__':
 
     for i in range( m ):
         for j in range( n ):
-            print(f'i={i}j={j}', end='\t')
+            print(f'[{i}][{j}]', end='\t')
 
         print('\n')
