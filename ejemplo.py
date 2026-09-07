@@ -5,8 +5,10 @@ if __name__=='__main__':
     run('cls', shell=True)
 
     m = 5
-    n = 100000
+    n = 10
 
     for i in range( m ):
         for j in range( n ):
-            print(f'i={i} j={j}')
+            print(f'i={i}j={j}', end='\t')
+
+        print('\n')
