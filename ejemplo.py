@@ -27,6 +27,7 @@ if __name__=='__main__':
     print(M[2][2], type(M[2][2]))
     print()
 
+
     print(M[0][0], end='\t')
     print(M[0][1], end='\t')
     print(M[0][2], end='\t')
@@ -42,3 +43,9 @@ if __name__=='__main__':
     print(M[2][2], end='\t')
     print()
 
+    print('\n\n')
+
+    for i in range(3):
+        for j in range(3):
+            print(M[i][j], end='\t')
+        print()
